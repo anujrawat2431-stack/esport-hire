@@ -3,7 +3,7 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChang
 import { getFirestore, collection, getDocs, query, orderBy, doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
 
 /* ====== CHANGE THIS: the Google account(s) allowed to open this page ====== */
-const ADMIN_EMAILS = ["YOUR_EMAIL@gmail.com"];
+const ADMIN_EMAILS = ["anujrawat2431@gmail.com"];
 /* ========================================================================= */
 
 const firebaseConfig = {
