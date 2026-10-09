@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>LAN Registrations - Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- LOGIN -->
+  <section class="login" id="login">
+    <div class="login-card">
+      <div class="logos">
+        <img src="lan-assets/maharathi.png" alt="Maharathi Esports">
+        <span>×</span>
+        <img src="lan-assets/gniot.png" alt="GNIOT">
+      </div>
+      <h1>LAN Admin</h1>
+      <p>Sign in with the admin Google account to view registrations.</p>
+      <button class="btn" id="signInBtn" type="button">Sign in with Google</button>
+      <p class="msg" id="loginMsg"></p>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <div class="app" id="app" hidden>
+    <header class="bar">
+      <div class="bar-l">
+        <img src="lan-assets/maharathi.png" alt="">
+        <h1>MHT<span>x</span>GNIOT LAN <em>Registrations</em></h1>
+      </div>
+      <div class="bar-r">
+        <span id="who"></span>
+        <button class="btn sm ghost" id="refreshBtn" type="button">↻ Refresh</button>
+        <button class="btn sm ghost" id="signOutBtn" type="button">Sign out</button>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <div class="stats" id="stats"></div>
+
+      <div class="tools">
+        <input id="search" type="search" placeholder="Search team, leader, phone, email, ID...">
+        <select id="fGame"><option value="">All games</option><option>BGMI</option><option>Free Fire Max</option><option>Valorant</option></select>
+        <select id="fStatus"><option value="">All payments</option><option value="pending">Pending</option><option value="verified">Verified</option><option value="rejected">Rejected</option></select>
+        <button class="btn sm" id="csvBtn" type="button">⬇ Download Excel/CSV</button>
+      </div>
+      <p class="count" id="count"></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>#</th><th>Logo</th><th>Team</th><th>Leader</th><th>Contact</th><th>Game(s)</th><th>Amount</th><th>UTR / Txn ID</th><th>Payment</th><th>Registered</th><th></th></tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <p class="empty" id="empty" hidden>No registrations found.</p>
+    </main>
+  </div>
+
+  <!-- DETAILS POPUP -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal-card" id="modalCard"></div>
+  </div>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
