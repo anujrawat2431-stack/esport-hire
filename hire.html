@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Esport Hire — Need a Player</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+    <img src="esporthirelogo.png" alt="Esport Hire" class="main-logo">
+    <h1 id="hireTitle">Need a Player</h1>
+    <p class="tagline" id="hireTagline">Fill in your match details</p>
+
+    <div class="mode-toggle">
+      <button type="button" id="singleModeBtn" class="mode-btn active">Single Player</button>
+      <button type="button" id="squadModeBtn" class="mode-btn">Hire Player/Players</button>
+    </div>
+
+    <form id="hireForm">
+      <label>Game</label>
+      <select id="hireGame" required>
+        <option value="">Select a game</option>
+        <option value="BGMI">BGMI</option>
+        <option value="Free Fire Max">Free Fire Max</option>
+        <option value="Valorant">Valorant</option>
+      </select>
+
+      <label>Number of Players Needed</label>
+      <input type="number" id="playerCount" min="1" max="4" value="1" readonly>
+      <p class="hint-text" id="squadCountHint" style="display:none;">Choose how many players you need (up to the game's max squad size)</p>
+
+      <label>Role</label>
+      <input type="text" id="role" placeholder="e.g. IGL, Assaulter, Sniper" required>
+
+      <label>Required Language</label>
+      <select id="hireLanguage" required>
+        <option value="">Select language</option>
+        <option value="Hindi">Hindi</option>
+        <option value="English">English</option>
+        <option value="Assamese">Assamese</option>
+        <option value="Bengali">Bengali</option>
+        <option value="Bodo">Bodo</option>
+        <option value="Dogri">Dogri</option>
+        <option value="Gujarati">Gujarati</option>
+        <option value="Kannada">Kannada</option>
+        <option value="Kashmiri">Kashmiri</option>
+        <option value="Konkani">Konkani</option>
+        <option value="Maithili">Maithili</option>
+        <option value="Malayalam">Malayalam</option>
+        <option value="Manipuri (Meitei)">Manipuri (Meitei)</option>
+        <option value="Marathi">Marathi</option>
+        <option value="Nepali">Nepali</option>
+        <option value="Odia (Oriya)">Odia (Oriya)</option>
+        <option value="Punjabi">Punjabi</option>
+        <option value="Sanskrit">Sanskrit</option>
+        <option value="Santali">Santali</option>
+        <option value="Sindhi">Sindhi</option>
+        <option value="Tamil">Tamil</option>
+        <option value="Telugu">Telugu</option>
+        <option value="Urdu">Urdu</option>
+      </select>
+
+      <label>Price per Player (₹)</label>
+      <select id="price" required>
+        <option value="">Select price</option>
+      </select>
+
+      <label>Match Date</label>
+      <input type="date" id="matchDate" required>
+
+      <label>IDP Time</label>
+      <input type="time" id="idpTime" required>
+
+      <button type="submit">Hire Player/Players</button>
+    </form>
+
+    <p id="hireOutput"></p>
+  </div>
+
+  <!-- Matchmaking Overlay -->
+  <div id="matchmakingOverlay" style="display:none;">
+    <img src="esporthirelogo.png" alt="Esport Hire" class="success-logo">
+    <div class="spinner" id="matchmakingSpinner"></div>
+    <h2 class="success-title" id="matchmakingTitle">Finding a player...</h2>
+    <p class="success-subtitle" id="matchmakingSubtext">Notifying nearby players</p>
+  </div>
+
+    <!-- Firebase SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      query,
+      where,
+      getDocs,
+      doc,
+      updateDoc,
+      onSnapshot
+    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB4HrPn0JJhjX9eT0JgIc7JZ_rc2yU0uh0",
+      authDomain: "esport-hire.firebaseapp.com",
+      projectId: "esport-hire",
+      storageBucket: "esport-hire.firebasestorage.app",
+      messagingSenderId: "851326993856",
+      appId: "1:851326993856:web:f5677945ef06e7e58d3425"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.firestoreDB = db;
+    window.firestoreCollection = collection;
+    window.firestoreAddDoc = addDoc;
+    window.firestoreQuery = query;
+    window.firestoreWhere = where;
+    window.firestoreGetDocs = getDocs;
+    window.firestoreDoc = doc;
+    window.firestoreUpdateDoc = updateDoc;
+    window.firestoreOnSnapshot = onSnapshot;
+
+    window.dispatchEvent(new Event("firebaseReady"));
+  </script>
+  <script src="hire.js"></script>
+</body>
+</html>

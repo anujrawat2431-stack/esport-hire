@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Esport Hire — Your Requests</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <img src="esporthirelogo.png" alt="Esport Hire" class="main-logo">
+    <h1>Incoming Requests</h1>
+    <p class="tagline">Respond within 2 minutes</p>
+
+    <div id="offersList"></div>
+    <p id="dashboardOutput" class="hint-text">Checking for requests...</p>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      query,
+      where,
+      onSnapshot,
+      doc,
+      updateDoc
+    } from "https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyB4HrPn0JJhjX9eT0JgIc7JZ_rc2yU0uh0",
+      authDomain: "esport-hire.firebaseapp.com",
+      projectId: "esport-hire",
+      storageBucket: "esport-hire.firebasestorage.app",
+      messagingSenderId: "851326993856",
+      appId: "1:851326993856:web:f5677945ef06e7e58d3425"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    window.firestoreDB = db;
+    window.firestoreCollection = collection;
+    window.firestoreQuery = query;
+    window.firestoreWhere = where;
+    window.firestoreOnSnapshot = onSnapshot;
+    window.firestoreDoc = doc;
+    window.firestoreUpdateDoc = updateDoc;
+
+    window.dispatchEvent(new Event("firebaseReady"));
+  </script>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

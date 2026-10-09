@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MHTxGNIOT LAN Registration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="lan.css">
+</head>
+<body>
+
+  <header class="top">
+    <img src="lan-assets/maharathi.png" alt="Maharathi Esports" class="top-logo">
+    <span class="top-x">×</span>
+    <img src="lan-assets/gniot.png" alt="GNIOT Group of Institutions" class="top-logo">
+  </header>
+
+  <main class="wrap">
+
+    <section class="hero">
+      <p class="hero-tag">LAN TOURNAMENT</p>
+      <h1>MHT<span class="x">x</span>GNIOT <em>LAN</em> Registration</h1>
+      <p class="hero-sub">Build your squad. Pick your game. Lock your slot.</p>
+    </section>
+
+    <!-- Progress -->
+    <ol class="stepper" id="stepper">
+      <li class="active"><span>1</span><b>Team Leader</b></li>
+      <li><span>2</span><b>Members</b></li>
+      <li><span>3</span><b>Payment</b></li>
+    </ol>
+
+    <form id="regForm" novalidate>
+
+      <!-- STEP 1 -->
+      <section class="step active" data-step="1">
+        <h2>Team Leader Details</h2>
+
+        <div class="field" data-f="leaderName">
+          <label for="leaderName">Team Leader Name</label>
+          <input id="leaderName" type="text" autocomplete="name" placeholder="Your full name">
+          <small class="err"></small>
+        </div>
+
+        <div class="field" data-f="games">
+          <label>Choose Game(s) <span class="hint">- you can pick more than one</span></label>
+          <div class="tiles" id="gameTiles"></div>
+          <small class="err"></small>
+        </div>
+
+        <div class="field" data-f="teamName">
+          <label for="teamName">Team Name</label>
+          <input id="teamName" type="text" placeholder="e.g. Maratha Warriors">
+          <small class="err"></small>
+        </div>
+
+        <div class="field" data-f="logo">
+          <label>Team Logo</label>
+          <label class="drop" id="logoDrop" for="teamLogo">
+            <img id="logoPreview" alt="" hidden>
+            <span id="logoText"><strong>Tap to upload</strong> your team logo<br><small>PNG or JPG, up to 5 MB</small></span>
+          </label>
+          <input id="teamLogo" type="file" accept="image/*" hidden>
+          <small class="err"></small>
+        </div>
+
+        <div class="row">
+          <div class="field" data-f="phone">
+            <label for="phone">Team Leader Number</label>
+            <input id="phone" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10-digit mobile number">
+            <small class="err"></small>
+          </div>
+          <div class="field" data-f="email">
+            <label for="email">Team Leader Email</label>
+            <input id="email" type="email" autocomplete="email" placeholder="you@example.com">
+            <small class="err"></small>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn" data-next>Next <span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+
+      <!-- STEP 2 -->
+      <section class="step" data-step="2">
+        <h2>Team Member Details</h2>
+        <p class="note" id="squadNote"></p>
+        <div id="members"></div>
+
+        <div class="actions two">
+          <button type="button" class="btn ghost" data-back><span aria-hidden="true">←</span> Back</button>
+          <button type="button" class="btn" data-next>Final Step <span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+
+      <!-- STEP 3 -->
+      <section class="step" data-step="3">
+        <h2>Registration Payment</h2>
+        <p class="note">Pay <b>once per squad, per game</b>. Scan the QR with any UPI app (PhonePe, GPay, Paytm), then enter the UTR / Transaction ID.</p>
+        <div id="payCards"></div>
+
+        <div class="total"><span>Total to pay</span><strong id="totalAmt">₹0</strong></div>
+        <p class="err block" id="submitErr"></p>
+
+        <div class="actions two">
+          <button type="button" class="btn ghost" data-back><span aria-hidden="true">←</span> Back</button>
+          <button type="submit" class="btn" id="submitBtn">Complete Registration</button>
+        </div>
+      </section>
+    </form>
+
+    <!-- SUCCESS -->
+    <section class="success" id="success" hidden>
+      <svg class="check" viewBox="0 0 52 52" aria-hidden="true">
+        <circle class="c1" cx="26" cy="26" r="25" fill="none"/>
+        <path class="c2" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+      </svg>
+      <h2>Registration Successful!</h2>
+      <p>Your squad is in. See you on the LAN battlefield.</p>
+      <div class="ticket">
+        <div><span>Registration ID</span><b id="sId"></b></div>
+        <div><span>Team</span><b id="sTeam"></b></div>
+        <div><span>Game(s)</span><b id="sGames"></b></div>
+        <div><span>Amount</span><b id="sAmt"></b></div>
+      </div>
+      <p class="small">Our team will verify your payment and contact you on your number / email. Keep your Registration ID safe.</p>
+      <a class="btn" href="index.html">Back to Home</a>
+    </section>
+
+  </main>
+
+  <footer class="foot">Maharathi Esports × GNIOT Group of Institutions</footer>
+
+  <script type="module" src="lan.js"></script>
+</body>
+</html>
